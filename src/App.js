@@ -5,12 +5,12 @@ import SeasonDisplay from './components/SeasonDisplay';
 
 class App extends React.Component {
 
-  APP_ID = 'b3f15555f7e25985e095c86fbbe6ad0d'
+  APP_ID = ''
   state = { 
     city: null, 
     temp: null, 
     info: null, 
-    err: null 
+    err: 'error' 
   }
 
   componentDidMount() {
@@ -30,13 +30,16 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-            <SeasonDisplay city={this.state.city} temp={this.state.temp} info={this.state.info} />
-        </header>
-      </div>
-    );
+    if (!this.state.err)
+      return (
+        <div className="App">
+          <header className="App-header">
+              <SeasonDisplay city={this.state.city} temp={this.state.temp} info={this.state.info} />
+          </header>
+        </div>
+      );
+    else
+        return <h1>{this.state.err}</h1>
   }
 }
 
