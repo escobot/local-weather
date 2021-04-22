@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   async fetchValues(lat, lon) {
-    const values = await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${this.APP_ID}`);
+    const values = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${this.APP_ID}`);
     this.setState({ 
       city: values.data.name,
       temp: values.data.main.temp, 
