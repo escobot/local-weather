@@ -1,5 +1,6 @@
 {
   "name": "local-weather",
+  "homepage": "http://escobot.github.io/local-weather",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
