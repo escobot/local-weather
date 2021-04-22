@@ -1,6 +1,10 @@
-const SeasonDisplay = () => {
+const SeasonDisplay = (props) => {
     return (
-        <h1>Season 1</h1>
+        <div>
+            <h2>{props.temp}</h2>
+            <h2>{props.info}</h2>
+            <h2>{props.city}</h2>
+        </div>
     );
 };
 
