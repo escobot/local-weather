@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.state.err)
+    if (this.state.city)
       return (
         <div className="App">
           <header className="App-header">
