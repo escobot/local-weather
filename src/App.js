@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import SeasonDisplay from './components/SeasonDisplay';
+import WeatherDisplay from './components/WeatherDisplay';
+import LoadingComponent from './components/LoaderComponent';
 
 class App extends React.Component {
 
@@ -9,14 +10,15 @@ class App extends React.Component {
   state = { 
     city: null, 
     temp: null, 
-    info: null, 
-    err: 'error' 
+    info: null,
+    isLoading: true,
+    err: null 
   }
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       position => this.fetchValues(position.coords.latitude, position.coords.longitude),
-      err => this.setState({ err })
+      err => this.setState({ err: err, isLoading: false })
     );
   }
 
@@ -25,16 +27,19 @@ class App extends React.Component {
     this.setState({ 
       city: values.data.name,
       temp: values.data.main.temp, 
-      info: values.data.weather[0].description
+      info: values.data.weather[0].description,
+      isLoading: false
     });
   }
 
   render() {
+    if (this.state.isLoading)
+      return <LoadingComponent message="Waiting for user to accept geolocation prompt." />
     if (this.state.city)
       return (
         <div className="App">
           <header className="App-header">
-              <SeasonDisplay city={this.state.city} temp={this.state.temp} info={this.state.info} />
+              <WeatherDisplay city={this.state.city} temp={this.state.temp} info={this.state.info} />
           </header>
         </div>
       );

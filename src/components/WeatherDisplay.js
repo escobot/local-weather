@@ -1,4 +1,4 @@
-const SeasonDisplay = (props) => {
+const WeatherDisplay = (props) => {
     return (
         <div>
             <h2>{Math.round(props.temp - 273.15)} °C</h2>
@@ -8,4 +8,4 @@ const SeasonDisplay = (props) => {
     );
 };
 
-export default SeasonDisplay;
+export default WeatherDisplay;
